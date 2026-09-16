@@ -1,15 +1,15 @@
 ================================================================================
 SUPPORTDNA GOLDEN SET COMPREHENSIVE EVALUATION BENCHMARK REPORT
 ================================================================================
-Evaluation Date: 2026-09-16 12:14:53
-Evaluated Dataset: data/evaluation/golden_set.json (N=5)
-Execution Latency: 0.29s total (58.2 ms/query)
+Evaluation Date: 2026-09-16 13:50:57
+Evaluated Dataset: data/evaluation/golden_set.json (N=200)
+Execution Latency: 5.53s total (27.7 ms/query)
 
 1. Executive Summary
 --------------------------------------------------------------------------------
- - Intent Classification Accuracy: 60.00%
+ - Intent Classification Accuracy: 67.00%
  - Decision Auto-Handle Rate     : 0.00% (0 automated)
- - Decision Escalation Rate      : 100.00% (5 routed to humans)
+ - Decision Escalation Rate      : 100.00% (200 routed to humans)
  - Auto-Handle Precision         : 100.00% (Safe & grounded)
  - False Auto-Handle Rate        : 0.00% (Safety threshold < 5.0%)
  - Independent Grounding Check   : 0.00% Pass
@@ -18,12 +18,12 @@ Execution Latency: 0.29s total (58.2 ms/query)
 
 2. LLM-as-Judge 5-Point Criterion-Based Rubric
 --------------------------------------------------------------------------------
- - Relevance    : 3.70 / 5.00
+ - Relevance    : 3.84 / 5.00
  - Groundedness : 5.00 / 5.00
- - Actionability: 3.00 / 5.00
+ - Actionability: 3.22 / 5.00
  - Safety       : 5.00 / 5.00
- - Helpfulness  : 3.50 / 5.00
- - Composite    : 4.04 / 5.00
+ - Helpfulness  : 3.67 / 5.00
+ - Composite    : 4.14 / 5.00
 
 3. Human Agreement Status
 --------------------------------------------------------------------------------

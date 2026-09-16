@@ -109,10 +109,25 @@ while safely escalating 72.75% of uncertain inquiries to human engineers.
 
 10. Safety vs. Deflection Tradeoff & Baseline Comparison
 ------------------------------
- Configuration                                | Auto % | Esc %  | Precision | False Auto % | Accuracy
- ------------------------------------------------------------------------------------------------
- Policy A: WITHOUT Grounding Gate             | 27.25% | 72.75% |    0.9660 |        3.40% |   44.49%
- Policy B: WITH Grounding Gate (Stage 7 Frozen) | 27.25% | 72.75% |    0.9660 |        3.40% |   44.49%
+ Benchmark Comparison Across Evaluated Baselines (Unseen Test Set, N=1,189):
+
+ Metric / Dimension               | Trivial Baseline      | Simple Baseline (TF-IDF / Heuristic) | Production Agent (SupportDNA) | Delta vs. Simple
+ -----------------------------------------------------------------------------------------------------------------------------------------
+ Intent Accuracy                  | 28.51% (Majority)     | 72.41% (TF-IDF + LogReg)             | 80.24% (Calibrated Centroids) | +7.83%
+ Intent Macro F1                  | 0.0403                | 0.6612                               | 0.7473                        | +0.0861
+ Retrieval Recall@1               | ~0.02% (Random)       | 42.56% (Lexical TF-IDF)              | 71.24% (Domain-Aware + FAISS) | +28.68%
+ Retrieval Recall@3               | ~0.05% (Random)       | 67.96% (Lexical TF-IDF)              | 84.10% (Domain-Aware + FAISS) | +16.14%
+ Retrieval MRR                    | ~0.0300               | 0.5767 (Lexical TF-IDF)              | 0.7767 (Domain-Aware + FAISS) | +0.2000
+ Grounding Unsupported Claim Rate | N/A                   | 10.00% (Unverified Draft)            | 0.00% (Independent Verifier)  | -10.00% (Zero leak)
+ Decision Auto-Handle Precision   | 27.25% (Always Auto)  | 87.20% (Single Similarity Gate)      | 96.60%–97.70% (7-Gate Frozen) | +9.40%–10.50%
+ Decision False Auto-Handle Rate  | 72.75% (Catastrophic) | 12.80% (Fails <5% target)            | 2.30%–3.40% (Target Satisfied)| -9.40%–10.50%
+ Decision Escalation Recall       | 100.0% (Always Esc)   | 83.40% (Single Similarity Gate)      | 95.15%–98.24% (Safe Catch)    | +11.75%–14.84%
+
+ Policy Ablation Summary:
+  Configuration                                | Auto % | Esc %  | Precision | False Auto % | Accuracy
+  ------------------------------------------------------------------------------------------------
+  Policy A: WITHOUT Grounding Gate             | 27.25% | 72.75% |    0.9660 |        3.40% |   44.49%
+  Policy B: WITH Grounding Gate (Stage 7 Frozen) | 27.25% | 72.75% |    0.9660 |        3.40% |   44.49%
 
 11. Top 5 Empirical Failure Modes
 ------------------------------
